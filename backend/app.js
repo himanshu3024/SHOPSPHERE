@@ -1,19 +1,37 @@
-// backend/app.js
-
-// Load environment variables from .env
+// app.js
 require('dotenv').config();
-
-// Import Express
 const express = require('express');
+const session = require('express-session');
+const path = require('path');
 const app = express();
 
-// Basic home route
+// Middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+// Session config
+app.use(session({
+  secret: process.env.SESSION_SECRET || 'defaultsecret',
+  resave: false,
+  saveUninitialized: true
+}));
+
+// Routes
+const authRoutes = require('./routes/auth');
+const productRoutes = require('./routes/products');
+const cartRoutes = require('./routes/cart');
+app.use('/', authRoutes);
+app.use('/products', productRoutes);
+app.use('/cart', cartRoutes);
+
+// Home route
 app.get('/', (req, res) => {
-  res.send('Welcome to ShopSphere! Server is running.');
+  res.render('index', { user: req.session.user });
 });
 
-// Start server
+// Server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`ShopSphere back end listening on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

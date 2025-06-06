@@ -7,7 +7,20 @@
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
-  "keywords": ["e-commerce", "shop", "azure", "nodejs"],
+  "keywords": [
+    "e-commerce",
+    "shop",
+    "azure",
+    "nodejs"
+  ],
   "author": "Himanshu Gandhi",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "mssql": "^11.0.1"
+  }
 }

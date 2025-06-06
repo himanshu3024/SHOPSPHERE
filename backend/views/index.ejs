@@ -1,0 +1,7 @@
+<h1>Welcome to ShopSphere</h1>
+<% if (user) { %>
+  <p>Hello, <%= user.Username %> | <a href="/logout">Logout</a></p>
+  <a href="/products">View Products</a> | <a href="/cart">Your Cart</a>
+<% } else { %>
+  <a href="/login">Login</a> | <a href="/register">Register</a>
+<% } %>
