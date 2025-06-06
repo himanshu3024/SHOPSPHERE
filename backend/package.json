@@ -1,0 +1,13 @@
+{
+  "name": "shopsphere-backend",
+  "version": "1.0.0",
+  "description": "ShopSphere e-commerce back end",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": ["e-commerce", "shop", "azure", "nodejs"],
+  "author": "Himanshu Gandhi",
+  "license": "MIT"
+}
